@@ -1,0 +1,19 @@
+name: GameMap
+version: '${project.version}'
+main: jp.houlab.mochidsuki.gamemap.Main
+api-version: '1.20'
+softdepend: [ Border ]
+
+commands:
+  giveBigMap:
+    aliases: [gbm]
+    description: BRC管理コマンド
+    permission: gamemap.command.giveBigMap
+    permission-message: Permission denied
+    usage: gr reload
+  debugg:
+    aliases: [debug]
+    description: BRC管理コマンド
+    permission: gamemap.command.debug
+    permission-message: Permission denied
+    usage: gr reload

@@ -1,0 +1,8 @@
+#マップの中心座標とマップ半径
+MAP:
+  Center:
+    x: 0
+    z: 0
+  Radius: 1000
+  MapData: 6
+  MapScale: 3

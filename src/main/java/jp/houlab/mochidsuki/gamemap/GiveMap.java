@@ -1,0 +1,44 @@
+package jp.houlab.mochidsuki.gamemap;
+
+import org.bukkit.GameMode;
+import org.bukkit.Material;
+import org.bukkit.entity.Player;
+import org.bukkit.inventory.ItemStack;
+import org.bukkit.inventory.meta.MapMeta;
+import org.bukkit.map.MapView;
+
+import static jp.houlab.mochidsuki.gamemap.Main.config;
+
+public class GiveMap {
+    static public void giveBig(Player player){
+        ItemStack mapItemB = new ItemStack(Material.FILLED_MAP,1);
+        MapMeta mapMetaB = (MapMeta)mapItemB.getItemMeta();
+
+        MapView viewB = player.getServer().createMap(player.getWorld());
+        viewB.addRenderer(new BigMapRender());
+        mapMetaB.setMapView(viewB);
+        mapItemB.setItemMeta(mapMetaB);
+        switch (config.getInt("MAP.MapScale")) {
+            case 0:
+                viewB.setScale(MapView.Scale.CLOSEST);
+                break;
+            case 1:
+                viewB.setScale(MapView.Scale.CLOSE);
+                break;
+            case 2:
+                viewB.setScale(MapView.Scale.NORMAL);
+                break;
+            case 3:
+                viewB.setScale(MapView.Scale.FAR);
+                break;
+            case 4:
+                viewB.setScale(MapView.Scale.FARTHEST);
+                break;
+        }
+        viewB.setTrackingPosition(true);
+        viewB.setCenterX(config.getInt("MAP.Center.x"));
+        viewB.setCenterZ(config.getInt("MAP.Center.z"));
+        //ビッグマップ付与
+        player.getInventory().setItem(8,mapItemB);
+    }
+}
