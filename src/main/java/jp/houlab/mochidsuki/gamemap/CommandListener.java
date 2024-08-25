@@ -1,7 +1,6 @@
 package jp.houlab.mochidsuki.gamemap;
 
 import jp.houlab.mochidsuki.border.BorderInfo;
-import jp.houlab.mochidsuki.border.V;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
