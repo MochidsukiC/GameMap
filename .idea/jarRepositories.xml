@@ -12,9 +12,19 @@
       <option name="url" value="https://maven.pkg.github.com/MochidsukiC/Pin" />
     </remote-repository>
     <remote-repository>
+      <option name="id" value="ArmorShield" />
+      <option name="name" value="ArmorShield" />
+      <option name="url" value="https://github.com/MochidsukiC/ArmorShield" />
+    </remote-repository>
+    <remote-repository>
       <option name="id" value="sonatype" />
       <option name="name" value="sonatype" />
       <option name="url" value="https://oss.sonatype.org/content/groups/public/" />
+    </remote-repository>
+    <remote-repository>
+      <option name="id" value="pin" />
+      <option name="name" value="pin" />
+      <option name="url" value="https://github.com/MochidsukiC/Pin" />
     </remote-repository>
     <remote-repository>
       <option name="id" value="papermc-repo" />

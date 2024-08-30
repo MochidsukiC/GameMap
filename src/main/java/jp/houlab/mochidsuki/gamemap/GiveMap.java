@@ -3,6 +3,7 @@ package jp.houlab.mochidsuki.gamemap;
 import org.bukkit.GameMode;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
+import org.bukkit.inventory.EquipmentSlot;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.MapMeta;
 import org.bukkit.map.MapView;
@@ -40,5 +41,17 @@ public class GiveMap {
         viewB.setCenterZ(config.getInt("MAP.Center.z"));
         //ビッグマップ付与
         player.getInventory().setItem(8,mapItemB);
+    }
+
+    static public void giveMini(Player player) {
+        ItemStack mapItem = new ItemStack(Material.FILLED_MAP,1);//
+        MapMeta mapMeta = (MapMeta)mapItem.getItemMeta();//
+        MapView view = player.getServer().createMap(player.getWorld());//
+        view.addRenderer(new MiniMapRender());//
+        mapMeta.setMapView(view);//
+        mapItem.setItemMeta(mapMeta);//
+        view.setScale(MapView.Scale.CLOSEST);
+        view.setTrackingPosition(true);
+        player.getInventory().setItem(EquipmentSlot.OFF_HAND,mapItem);
     }
 }
