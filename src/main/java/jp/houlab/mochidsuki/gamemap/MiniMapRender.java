@@ -215,8 +215,8 @@ public class MiniMapRender extends MapRenderer {
                 }
 
                 if (!teammate.hasPotionEffect(PotionEffectType.UNLUCK)) {
-                    if (teammate.getInventory().getItem(22) != null) {
-                        ShieldUtil shieldUtil = new ShieldUtil(teammate.getInventory().getItem(22));
+                    if (teammate.getInventory().getItem(jp.houlab.mochidsuki.armorshield.Main.config.getInt("ChestPlateSlot")) != null) {
+                        ShieldUtil shieldUtil = new ShieldUtil(teammate.getInventory().getItem(jp.houlab.mochidsuki.armorshield.Main.config.getInt("ChestPlateSlot")));
                         for (int ii = 0; ii < shieldUtil.getShieldMax(); ii++) {
                             if (ii < shieldUtil.getShieldNow()) {
                                 try {
