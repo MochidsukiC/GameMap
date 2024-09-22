@@ -7,8 +7,12 @@ import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 import org.jetbrains.annotations.NotNull;
 
-import static jp.houlab.mochidsuki.pin.Pin.plugin;
+import static jp.houlab.mochidsuki.gamemap.Main.plugin;
 
+/**
+ * コマンドリスナー
+ * @author Mochidsuki
+ */
 public class CommandListener implements CommandExecutor {
     @Override
     public boolean onCommand(@NotNull CommandSender commandSender, @NotNull Command command, @NotNull String s, @NotNull String[] strings) {

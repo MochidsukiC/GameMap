@@ -105,12 +105,6 @@
       </dependency>
       <dependency>
           <groupId>jp.houlab.mochidsuki</groupId>
-          <artifactId>pin</artifactId>
-          <version>1.0-SNAPSHOT</version>
-          <scope>provided</scope>
-      </dependency>
-      <dependency>
-          <groupId>jp.houlab.mochidsuki</groupId>
           <artifactId>armorshield</artifactId>
           <version>1.0-SNAPSHOT</version>
           <scope>provided</scope>

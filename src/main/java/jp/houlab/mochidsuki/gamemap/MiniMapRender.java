@@ -16,8 +16,17 @@ import java.util.Iterator;
 
 import static jp.houlab.mochidsuki.border.Main.plugin;
 
-
+/**
+ * ミニマップをレンダリングする
+ * @author Mochiduski
+ */
 public class MiniMapRender extends MapRenderer {
+    /**
+     * レンダリングする
+     * @param map マップ
+     * @param canvas キャンバス
+     * @param player 対象プレイヤー
+     */
     @Override
     public void render(@NotNull MapView map, @NotNull MapCanvas canvas, @NotNull Player player) {
         map.setCenterX(player.getLocation().getBlockX());

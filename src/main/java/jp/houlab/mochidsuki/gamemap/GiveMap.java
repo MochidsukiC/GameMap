@@ -10,7 +10,15 @@ import org.bukkit.map.MapView;
 
 import static jp.houlab.mochidsuki.gamemap.Main.config;
 
+/**
+ * マップを付与する
+ * @author Mochidski
+ */
 public class GiveMap {
+    /**
+     * ビッグマップを付与する
+     * @param player ターゲットのプレイヤー
+     */
     static public void giveBig(Player player){
         ItemStack mapItemB = new ItemStack(Material.FILLED_MAP,1);
         MapMeta mapMetaB = (MapMeta)mapItemB.getItemMeta();
@@ -43,6 +51,10 @@ public class GiveMap {
         player.getInventory().setItem(8,mapItemB);
     }
 
+    /**
+     * ミニマップを付与する
+     * @param player ターゲットのプレイヤー
+     */
     static public void giveMini(Player player) {
         ItemStack mapItem = new ItemStack(Material.FILLED_MAP,1);//
         MapMeta mapMeta = (MapMeta)mapItem.getItemMeta();//

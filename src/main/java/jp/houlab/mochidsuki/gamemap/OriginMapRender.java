@@ -9,9 +9,19 @@ import org.jetbrains.annotations.NotNull;
 import java.awt.*;
 import java.util.List;
 
+/**
+ * ビッグマップの下地を取得
+ * @author Mochidski
+ */
 public class OriginMapRender extends MapRenderer {
 
     static public Color[] colors = new Color[16384];
+    /**
+     * 実行
+     * @param mapView マップ
+     * @param mapCanvas キャンバス
+     * @param player 対象プレイヤー
+     */
     @Override
     public void render(@NotNull MapView mapView, @NotNull MapCanvas mapCanvas, @NotNull Player player) {
         int colorsi = 0;

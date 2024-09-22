@@ -16,9 +16,17 @@ import java.util.Objects;
 import static jp.houlab.mochidsuki.gamemap.Main.config;
 import static jp.houlab.mochidsuki.pin.V.*;
 
-
+/**
+ * ビッグマップをレンダリングする
+ * @author Mochiduski
+ */
 public class BigMapRender extends MapRenderer {
-
+    /**
+     * レンダリングする
+     * @param map マップ
+     * @param canvas キャンバス
+     * @param player 対象プレイヤー
+     */
     @Override
     public void render(@NotNull MapView map, @NotNull MapCanvas canvas, @NotNull Player player) {
         //Mapコピー
@@ -58,41 +66,6 @@ public class BigMapRender extends MapRenderer {
         //チームメイト表示
 
         MapCursorCollection cursor = new MapCursorCollection();
-        /*
-        Team playerteam = player.getScoreboard().getPlayerTeam(player);
-        Iterator<String> iterator = playerteam.getEntries().iterator();
-        while (iterator.hasNext()){
-            try {
-                Player teammate = player.getServer().getPlayer(iterator.next());
-                if (teammate != null) {
-                    if (!(teammate == player)) {
-                        int x = (teammate.getLocation().getBlockX() - config.getInt("MAP.Center.x")) / mapZoom;
-                        if (x > 64) {
-                            x = 64;
-                        } else if (x < -64) {
-                            x = -64;
-                        }
-                        int z = (teammate.getLocation().getBlockZ() - config.getInt("MAP.Center.z")) / mapZoom;
-                        if (z > 64) {
-                            z = 64;
-                        } else if (z < -64) {
-                            z = -64;
-                        }
-                        cursor.addCursor(new MapCursor((byte) x, (byte) z, (byte) ((teammate.getLocation().getYaw() - teammate.getLocation().getYaw() % 45) / 45), MapCursor.Type.BLUE_POINTER, true));
-                    }
-                    if(pin.containsKey(teammate)) {
-                        cursor.addCursor(new MapCursor((byte) ((pin.get(teammate).getBlockX() - config.getInt("MAP.Center.x")) / mapZoom * 2), (byte) ((pin.get(teammate).getBlockZ() - config.getInt("MAP.Center.z")) / mapZoom * 2), (byte) 0, MapCursor.Type.BANNER_YELLOW, true));
-                    }
-                    if(pinRed.containsKey(teammate)) {
-                        cursor.addCursor(new MapCursor((byte) ((pinRed.get(teammate).getBlockX() - config.getInt("MAP.Center.x")) / mapZoom * 2), (byte) ((pinRed.get(teammate).getBlockZ() - config.getInt("MAP.Center.z")) / mapZoom * 2), (byte) 0, MapCursor.Type.BANNER_RED, true));
-                    }
-                }
-            }catch (Exception e){
-                e.printStackTrace();
-            }
-        }
-
-         */
 
         for (String name : player.getScoreboard().getPlayerTeam(player).getEntries()) {
             if (Bukkit.getPlayer(name) != null && Bukkit.getPlayer(name).isOnline() ) {
@@ -170,7 +143,15 @@ public class BigMapRender extends MapRenderer {
         }
     }
 
-
+    /**
+     * カーソルを位置の調整をして作成
+     * @param x x座標
+     * @param z z座標
+     * @param rotation 回転
+     * @param type カーソルタイプ
+     * @return カーソル
+     * マップ外のカーソル位置を調整
+     */
     private MapCursor createCursor(int x, int z, byte rotation, MapCursor.Type type) {
         if (x > 128) {
             x = 128;
