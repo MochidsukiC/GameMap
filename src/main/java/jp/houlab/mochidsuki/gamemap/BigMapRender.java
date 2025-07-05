@@ -4,16 +4,20 @@ package jp.houlab.mochidsuki.gamemap;
 import jp.houlab.mochidsuki.border.BorderInfo;
 import jp.houlab.mochidsuki.pin.Pin;
 import org.bukkit.Bukkit;
+import org.bukkit.GameMode;
 import org.bukkit.entity.Player;
 import org.bukkit.map.*;
 import org.bukkit.scoreboard.Team;
 import org.jetbrains.annotations.NotNull;
 
 import java.awt.*;
+import java.util.HashMap;
+import java.util.HashSet;
 import java.util.Iterator;
 import java.util.Objects;
 
 import static jp.houlab.mochidsuki.gamemap.Main.config;
+import static jp.houlab.mochidsuki.gamemap.Main.plugin;
 import static jp.houlab.mochidsuki.pin.V.*;
 
 /**
@@ -91,7 +95,6 @@ public class BigMapRender extends MapRenderer {
             }
         }
 
-        canvas.setCursors(cursor);
 
 
         //border予測線
@@ -141,6 +144,26 @@ public class BigMapRender extends MapRenderer {
                 canvas.setPixelColor(distanceNow[1] + 64, distanceNow[2] + 64, Color.red);
             }
         }
+
+        //敵位置表示
+        if(Main.isEnemyVisible(player)){
+            for(Player enemy : plugin.getServer().getOnlinePlayers()){
+                if(!enemy.getName().equals(player.getName())) {
+                    if (player.getScoreboard().getPlayerTeam(player) == null || (player.getScoreboard().getPlayerTeam(player) != null && !player.getScoreboard().getPlayerTeam(player).getEntries().contains(enemy.getName()))) {
+                        if (enemy.getGameMode() == GameMode.ADVENTURE || enemy.getGameMode() == GameMode.SURVIVAL) {
+                            float yaw = enemy.getLocation().getYaw();
+                            if (yaw < 0) {
+                                yaw = yaw + 360;
+                            }
+                            cursor.addCursor(createCursor((enemy.getLocation().getBlockX() - config.getInt("MAP.Center.x")) / mapZoom * 2, (enemy.getLocation().getBlockZ() - config.getInt("MAP.Center.z")) / mapZoom * 2,(byte) ((yaw - yaw % 22.5) / 22.5), MapCursor.Type.RED_POINTER));
+                        }
+                    }
+                }
+            }
+        }
+
+        canvas.setCursors(cursor);
+
     }
 
     /**
@@ -165,4 +188,8 @@ public class BigMapRender extends MapRenderer {
         }
         return new MapCursor((byte) x, (byte) z,rotation,type,true);
     }
+
+
+
+
 }

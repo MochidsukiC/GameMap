@@ -8,6 +8,8 @@ import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.MapMeta;
 import org.bukkit.map.MapView;
 
+import java.util.HashSet;
+
 import static jp.houlab.mochidsuki.gamemap.Main.config;
 
 /**
@@ -66,4 +68,6 @@ public class GiveMap {
         view.setTrackingPosition(true);
         player.getInventory().setItem(EquipmentSlot.OFF_HAND,mapItem);
     }
+
+
 }

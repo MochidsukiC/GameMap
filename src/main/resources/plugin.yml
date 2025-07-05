@@ -17,3 +17,9 @@ commands:
     permission: gamemap.command.debug
     permission-message: Permission denied
     usage: gr reload
+  enemyvisible:
+    aliases: [ev]
+    description: BRC管理コマンド
+    permission: gamemap.command.enemyvisible
+    permission-message: Permission denied
+    usage: gr reload

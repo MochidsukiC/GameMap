@@ -30,6 +30,9 @@ public class CommandListener implements CommandExecutor {
         if(s.equalsIgnoreCase("debugg")) {
             commandSender.sendMessage(BorderInfo.getNowPX() + "," + BorderInfo.getNowMX() + "," + BorderInfo.getNowPZ() + "," + BorderInfo.getNowMZ());
         }
+        if(s.equalsIgnoreCase("enemyvisible")) {
+            Main.setEnemyVisible((Player) commandSender,!Main.isEnemyVisible((Player) commandSender));
+        }
         return false;
     }
 }

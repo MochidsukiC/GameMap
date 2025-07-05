@@ -2,10 +2,13 @@ package jp.houlab.mochidsuki.gamemap;
 
 import org.bukkit.Material;
 import org.bukkit.configuration.file.FileConfiguration;
+import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.MapMeta;
 import org.bukkit.plugin.Plugin;
 import org.bukkit.plugin.java.JavaPlugin;
+
+import java.util.HashSet;
 
 import static org.bukkit.Bukkit.getMap;
 /**
@@ -28,6 +31,7 @@ public final class Main extends JavaPlugin {
 
         getCommand("giveBigMap").setExecutor(new CommandListener());
         getCommand("debugg").setExecutor(new CommandListener());
+        getCommand("enemyvisible").setExecutor(new CommandListener());
 
         ItemStack mapItemB = new ItemStack(Material.FILLED_MAP,1);
         MapMeta mapMetaB = (MapMeta)mapItemB.getItemMeta();
@@ -41,5 +45,19 @@ public final class Main extends JavaPlugin {
     @Override
     public void onDisable() {
         // Plugin shutdown logic
+    }
+
+    private final static HashSet<Player> enemyPositionVisiblePlayer = new HashSet<>();
+
+    public static void setEnemyVisible(Player player,boolean visible){
+        if(visible){
+            enemyPositionVisiblePlayer.add(player);
+        }else {
+            enemyPositionVisiblePlayer.remove(player);
+        }
+    }
+
+    public static boolean isEnemyVisible(Player player){
+        return enemyPositionVisiblePlayer.contains(player);
     }
 }
