@@ -2,7 +2,8 @@ package jp.houlab.mochidsuki.gamemap;
 
 import jp.houlab.mochidsuki.armorshield.ShieldUtil;
 import jp.houlab.mochidsuki.border.BorderInfo;
-import jp.houlab.mochidsuki.pin.V;
+import jp.houlab.mochidsuki.pin.Utilities;
+import static jp.houlab.mochidsuki.pin.Utilities.*;
 import org.bukkit.Bukkit;
 import org.bukkit.GameMode;
 import org.bukkit.entity.Player;
@@ -72,16 +73,16 @@ public class MiniMapRender extends MapRenderer {
                         cursor.addCursor(new MapCursor((byte) x, (byte) z, (byte) ((yaw - yaw % 22.5) / 22.5), MapCursor.Type.BLUE_POINTER, true));
 
                     }
-                    if (V.pin.containsKey(teammate)) {
-                        int x = V.pin.get(teammate).getBlockX() - player.getLocation().getBlockX();
-                        int z = V.pin.get(teammate).getBlockZ() - player.getLocation().getBlockZ();
+                    if (Utilities.pin.containsKey(teammate)) {
+                        int x = pin.get(teammate).getBlockX() - player.getLocation().getBlockX();
+                        int z = pin.get(teammate).getBlockZ() - player.getLocation().getBlockZ();
                         if (x < 128 && x > -128 && z < 128 && z > -128) {
                             cursor.addCursor(new MapCursor((byte) x, (byte) z, (byte) 0, MapCursor.Type.BANNER_YELLOW, true));
                         }
                     }
-                    if (V.pinRed.containsKey(teammate)) {
-                        int xR = V.pinRed.get(teammate).getBlockX() - player.getLocation().getBlockX();
-                        int zR = V.pinRed.get(teammate).getBlockZ() - player.getLocation().getBlockZ();
+                    if (pinRed.containsKey(teammate)) {
+                        int xR = pinRed.get(teammate).getBlockX() - player.getLocation().getBlockX();
+                        int zR = pinRed.get(teammate).getBlockZ() - player.getLocation().getBlockZ();
                         if (xR < 128 && xR > -128 && zR < 128 && zR > -128) {
                             cursor.addCursor(new MapCursor((byte) xR, (byte) zR, (byte) 0, MapCursor.Type.BANNER_RED, true));
                         }

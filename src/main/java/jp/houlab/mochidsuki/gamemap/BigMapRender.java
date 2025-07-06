@@ -11,14 +11,10 @@ import org.bukkit.scoreboard.Team;
 import org.jetbrains.annotations.NotNull;
 
 import java.awt.*;
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.Iterator;
-import java.util.Objects;
 
 import static jp.houlab.mochidsuki.gamemap.Main.config;
 import static jp.houlab.mochidsuki.gamemap.Main.plugin;
-import static jp.houlab.mochidsuki.pin.V.*;
+import static jp.houlab.mochidsuki.pin.Utilities.*;
 
 /**
  * ビッグマップをレンダリングする
@@ -94,6 +90,7 @@ public class BigMapRender extends MapRenderer {
                 }
             }
         }
+
 
 
 
